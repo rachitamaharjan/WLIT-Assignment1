@@ -1,0 +1,88 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="1671.2">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+    span.Apple-tab-span {white-space:pre}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;html&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;head&gt;&lt;title&gt;day&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;body&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;div &gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;h1 id="Change"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;center&gt; Movie lists &lt;/center&gt;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>&lt;/h1&gt;</p>
+<p class="p1">&lt;form&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;center&gt;&lt;input type="button" value="Show" onclick="here()"&gt;&lt;/center&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;ol id="w"&gt;</p>
+<p class="p2"><span class="Apple-converted-space">  </span></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/ol&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;/form&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>//console.log(text);</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space"> </span>/* document.ul.appendchild(linn) */</p>
+<p class="p1"><span class="Apple-converted-space">  </span>var root = 'http://localhost:3000/movies'</p>
+<p class="p2"><br></p>
+<p class="p1">// Make a GET request</p>
+<p class="p1">async function here(){</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>try{</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>let val =<span class="Apple-tab-span">	</span>await axios.get(root)</p>
+<p class="p1"><span class="Apple-converted-space">        </span>var alldata = val.data</p>
+<p class="p1"><span class="Apple-converted-space">        </span>var eachdata</p>
+<p class="p1"><span class="Apple-converted-space">        </span>for (eachdata in alldata){</p>
+<p class="p1"><span class="Apple-converted-space">          </span>var final = alldata[eachdata].name+"<span class="Apple-converted-space">  </span>"</p>
+<p class="p1"><span class="Apple-converted-space">          </span>console.log(final)</p>
+<p class="p1"><span class="Apple-converted-space">          </span>var linn=document.createElement('li');</p>
+<p class="p1"><span class="Apple-converted-space">          </span>linn.setAttribute("id", eachdata)</p>
+<p class="p1"><span class="Apple-converted-space">           </span>var g = document.createElement("INPUT");<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">              </span>g.setAttribute("type", "button");<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">              </span>g.setAttribute("value", "watch " ); <span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">              </span>g.setAttribute("id", eachdata);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">              </span>g.onclick = function() {myFunction(this.id)}</p>
+<p class="p1"><span class="Apple-converted-space">              </span>//document.body.appendChild(g);</p>
+<p class="p1"><span class="Apple-converted-space">           </span>console.log(linn.id)</p>
+<p class="p1"><span class="Apple-converted-space">           </span>var unordered = document.getElementById("w");</p>
+<p class="p1"><span class="Apple-converted-space">           </span>linn.innerHTML = final</p>
+<p class="p1"><span class="Apple-converted-space">           </span>unordered.appendChild(linn).appendChild(g);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>catch(error) {</p>
+<p class="p1"><span class="Apple-converted-space">      </span>console.log(error)</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1">}</p>
+<p class="p2"><br></p>
+<p class="p1">function myFunction(id)<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">              </span>{</p>
+<p class="p1"><span class="Apple-converted-space">              <span class="Apple-tab-span">	</span></span>console.log(id)</p>
+<p class="p1"><span class="Apple-converted-space">                </span>document.getElementById(id).style="text-decoration: line-through"</p>
+<p class="p1"><span class="Apple-converted-space">              </span>}</p>
+<p class="p1">//here()</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">  </span>&lt;/script&gt;</p>
+<p class="p1"><span class="Apple-converted-space"> </span>&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+<p class="p2"><br></p>
+</body>
+</html>
